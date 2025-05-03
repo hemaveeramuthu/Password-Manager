@@ -10,13 +10,14 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Twilio credentials
-const accountSid = 'AC7ea58a2268cb1aebbd41c0d342e6c5ed';
-const authToken = '62c715033ed0a2745c0bc5b79e633ccf';
-const serviceSid = 'VAfaad3504fa33c9cc42fc0adc8eac644b';
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const serviceSid = process.env.TWILIO_SERVICE_SID;
+
 const client = twilio(accountSid, authToken);
 
 // MongoDB connection string (your MongoDB URI)
-const mongoURI = 'mongodb+srv://user1:karan@cluster1.bozbp.mongodb.net/';
+const mongoURI = process.env.MONGODB_URI;
 
 // MongoDB connection setup
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
